@@ -1,16 +1,20 @@
+//values for complexity and affordability are enums
 enum Complexity {
   simple,
   challenging,
   hard,
 }
 
+//enum for affordability
 enum Affordability {
   affordable,
   pricey,
   luxurious,
 }
 
+//Meal model with all the required fields
 class Meal {
+  //class constructor
   const Meal({
     required this.id,
     required this.categories,
@@ -26,7 +30,7 @@ class Meal {
     required this.isVegan,
     required this.isVegetarian,
   });
-
+  //final fields for the class constructor
   final String id;
   final List<String> categories;
   final String title;
