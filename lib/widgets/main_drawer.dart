@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 
+//main drawer widget
 class MainDrawer extends StatelessWidget {
+  //constructor for the main drawer
   const MainDrawer({super.key, required this.onSelectScreen});
 
   final void Function(String identifier) onSelectScreen;
 
   @override
+  //build method for the main drawer
   Widget build(BuildContext context) {
+    //return a drawer widget
     return Drawer(
       child: Column(
         children: [
+          //drawer header
           DrawerHeader(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
+              //gradient for the drawer header
               gradient: LinearGradient(
                 colors: [
                   Theme.of(context).colorScheme.primaryContainer,
@@ -25,14 +31,18 @@ class MainDrawer extends StatelessWidget {
                 end: Alignment.bottomRight,
               ),
             ),
+            //row widget for the drawer header
             child: Row(
               children: [
+                //icon for the drawer header
                 Icon(
                   Icons.fastfood,
                   size: 48,
                   color: Theme.of(context).colorScheme.primary,
                 ),
                 const SizedBox(width: 18),
+
+                //text widget for the drawer header
                 Text(
                   'Cooking Up!',
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -42,6 +52,8 @@ class MainDrawer extends StatelessWidget {
               ],
             ),
           ),
+
+          //list tile for the meals
           ListTile(
             leading: Icon(
               Icons.restaurant,
@@ -59,7 +71,8 @@ class MainDrawer extends StatelessWidget {
               onSelectScreen('meals');
             },
           ),
-          ListTile(
+          //list tile for the filters
+          ListTile(            
             leading: Icon(
               Icons.settings,
               size: 26,
@@ -72,6 +85,8 @@ class MainDrawer extends StatelessWidget {
                     fontSize: 24,
                   ),
             ),
+            
+            //on tap event handler
             onTap: () {
               onSelectScreen('filters');
             },
