@@ -78,7 +78,11 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    //filter the meals based on the selected filters
     final availableMeals = dummyMeals.where((meal) {
+
+      //return false if the meal does not meet the selected filters
       if (_selectedFilters[Filter.glutenFree]! && !meal.isGlutenFree) {
         return false;
       }
@@ -92,8 +96,11 @@ class _TabsScreenState extends State<TabsScreen> {
         return false;
       }
       return true;
+
+      //convert the iterable to a list
     }).toList();
 
+    //active page and title based on the selected index
     Widget activePage = CategoriesScreen(
       onToggleFavorite: _toggleMealFavoriteStatus,
       availableMeals: availableMeals,
@@ -107,23 +114,29 @@ class _TabsScreenState extends State<TabsScreen> {
       );
       activePageTitle = 'Your Favorites';
     }
-
+    //return the scaffold widget with the active page
     return Scaffold(
       appBar: AppBar(
         title: Text(activePageTitle),
       ),
+      //build the main drawer
       drawer: MainDrawer(
         onSelectScreen: _setScreen,
       ),
       body: activePage,
+
+      //bottom navigation bar
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
         currentIndex: _selectedPageIndex,
         items: const [
+
+          //bottom navigation bar categories item
           BottomNavigationBarItem(
             icon: Icon(Icons.set_meal),
             label: 'Categories',
           ),
+          //bottom navigation bar favorites item
           BottomNavigationBarItem(
             icon: Icon(Icons.star),
             label: 'Favorites',
