@@ -13,7 +13,6 @@ enum Filter {
 
 //filters screen widget
 class FiltersScreen extends StatefulWidget {
-  
   //constructor for the filters screen
   const FiltersScreen({super.key, required this.currentFilters});
 
@@ -38,7 +37,6 @@ class _FiltersScreenState extends State<FiltersScreen> {
 
   //method to initialize the state
   void initState() {
-
     //initialize the state with the current filters
     super.initState();
     //get the current filters
@@ -66,15 +64,25 @@ class _FiltersScreenState extends State<FiltersScreen> {
       //     }
       //   },
       // ),
-      body: WillPopScope(
-        onWillPop: () async {
+      //explain me this code
+
+      body: PopScope(
+
+        //onPopInvokedWithResult is a callback that is invoked when the user pops the screen
+        canPop: false,
+        
+        onPopInvokedWithResult: (bool didPop, dynamic result) {
+
+          //if the screen was popped, return
+          if (didPop) return;
+          
+          //if the screen was not popped, pop the screen with the filters
           Navigator.of(context).pop({
             Filter.glutenFree: _glutenFreeFilterSet,
             Filter.lactoseFree: _lactoseFreeFilterSet,
             Filter.vegetarian: _vegetarianFilterSet,
             Filter.vegan: _veganFilterSet,
           });
-          return false;
         },
         child: Column(
           children: [
