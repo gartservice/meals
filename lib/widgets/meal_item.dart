@@ -45,7 +45,7 @@ class MealItem extends StatelessWidget {
       ),
 
       //clip behavior for the card
-      clipBehavior: Clip.hardEdge,      
+      clipBehavior: Clip.hardEdge,
       elevation: 2,
 
       //inkwell widget for the card

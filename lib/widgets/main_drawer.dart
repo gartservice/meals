@@ -72,7 +72,7 @@ class MainDrawer extends StatelessWidget {
             },
           ),
           //list tile for the filters
-          ListTile(            
+          ListTile(
             leading: Icon(
               Icons.settings,
               size: 26,
